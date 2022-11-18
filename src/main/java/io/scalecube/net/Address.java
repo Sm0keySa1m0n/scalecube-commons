@@ -1,26 +1,25 @@
 package io.scalecube.net;
 
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class Address {
+public record Address(String host, int port) implements Serializable {
 
-  public static final Address NULL_ADDRESS = Address.create("nullhost", 0);
+  public static final Address NULL_ADDRESS = new Address("nullhost", 0);
 
   public static final Pattern ADDRESS_FORMAT = Pattern.compile("(?<host>^.*):(?<port>\\d+$)");
 
-  private String host;
-  private int port;
-
-  /** Instantiates empty address for deserialization purpose. */
-  Address() {}
-
-  private Address(String host, int port) {
+  public Address(String host, int port) {
     this.host = convertIfLocalhost(host);
     this.port = port;
+  }
+
+  @Override
+  public String toString() {
+    return this.host + ":" + this.port;
   }
 
   /**
@@ -50,17 +49,6 @@ public final class Address {
       throw new IllegalArgumentException("can't parse port from: " + hostandport, ex);
     }
 
-    return new Address(host, port);
-  }
-
-  /**
-   * Create address from host and port.
-   *
-   * @param host host
-   * @param port port
-   * @return address
-   */
-  public static Address create(String host, int port) {
     return new Address(host, port);
   }
 
@@ -98,45 +86,5 @@ public final class Address {
         result = host;
     }
     return result;
-  }
-
-  /**
-   * Returns host.
-   *
-   * @return host
-   */
-  public String host() {
-    return host;
-  }
-
-  /**
-   * Returns port.
-   *
-   * @return port
-   */
-  public int port() {
-    return port;
-  }
-
-  @Override
-  public boolean equals(Object other) {
-    if (this == other) {
-      return true;
-    }
-    if (other == null || getClass() != other.getClass()) {
-      return false;
-    }
-    Address that = (Address) other;
-    return Objects.equals(host, that.host) && Objects.equals(port, that.port);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(host, port);
-  }
-
-  @Override
-  public String toString() {
-    return host + ":" + port;
   }
 }

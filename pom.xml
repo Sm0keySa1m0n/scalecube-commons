@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.scalecube</groupId>
     <artifactId>scalecube-parent</artifactId>
-    <version>0.2.20</version>
+    <version>0.2.21-SNAPSHOT</version>
   </parent>
 
   <artifactId>scalecube-commons</artifactId>
@@ -17,17 +17,17 @@
     <repository>
       <id>github</id>
       <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/scalecube/packages</url>
+      <url>https://maven.pkg.github.com/Sm0keySa1m0n/</url>
       <snapshots>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
       </snapshots>
     </repository>
   </repositories>
 
   <scm>
-    <url>https://github.com/scalecube/scalecube-commons</url>
-    <connection>scm:git:https://github.com/scalecube/scalecube-commons.git</connection>
-    <developerConnection>scm:git:https://github.com/scalecube/scalecube-commons.git
+    <url>https://github.com/Sm0keySa1m0n/scalecube-commons</url>
+    <connection>scm:git:https://github.com/Sm0keySa1m0n/scalecube-commons.git</connection>
+    <developerConnection>scm:git:https://github.com/Sm0keySa1m0n/scalecube-commons.git
     </developerConnection>
     <tag>HEAD</tag>
   </scm>
@@ -35,7 +35,7 @@
   <properties>
     <reactor.version>2020.0.23</reactor.version>
 
-    <distributionManagement.url>https://maven.pkg.github.com/scalecube/scalecube-commons
+    <distributionManagement.url>https://maven.pkg.github.com/Sm0keySa1m0n/scalecube-commons
     </distributionManagement.url>
   </properties>
 
